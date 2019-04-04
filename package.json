@@ -1,0 +1,25 @@
+{
+  "name": "vue-cli-fast-mock",
+  "version": "0.0.1",
+  "description": "fast use mockjs&&hjson in vue-cli@3.x",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wsz7777/vue-cli-fast-mock.git"
+  },
+  "keywords": [
+    "mock",
+    "hjson",
+    "vue-cli",
+    "mockjs&&hsjon"
+  ],
+  "author": "wsz7777",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wsz7777/vue-cli-fast-mock/issues"
+  },
+  "homepage": "https://github.com/wsz7777/vue-cli-fast-mock#readme"
+}
