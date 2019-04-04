@@ -1,0 +1,6 @@
+// method: get
+// desc: 查询接口
+{
+  "query": true,
+  "date": "@datetime('yyyy-MM-dd A HH:mm:ss')"
+}
