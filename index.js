@@ -8,14 +8,15 @@ const getRootPath = (() => {
   const cont = JSON.parse(pkjson);
   let f = null;
   const mockP = path.join(cont._where, "mock");
-  const state = fs.existsSync(nextUrl) && fs.statSync(mockP).isDirectory();
+  const state = fs.existsSync(mockP) && fs.statSync(mockP).isDirectory();
 
   f = path.join(state ? cont._where : __dirname, "mock");
 
-  let confCont = fs.readFileSync(path.join(f, "config.json"))
-  
+  let confCont = fs.existsSync(path.join(f, "config.json")) ?
+    JSON.parse(fs.readFileSync(path.join(f, "config.json"), "utf8")) : {};
+
   CONFIG = Object.assign(CONFIG, confCont);
-  
+
   return f;
 })();
 
