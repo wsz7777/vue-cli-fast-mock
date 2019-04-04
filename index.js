@@ -1,17 +1,21 @@
 const path = require("path");
 const fs = require("fs");
-
+let CONFIG = {
+  baseUrl: "/"
+};
 const getRootPath = (() => {
   const pkjson = fs.readFileSync(path.join(__dirname, 'package.json'), "utf8");
   const cont = JSON.parse(pkjson);
   let f = null;
-  try {
-    f = fs.statSync(path.join(cont._where, "mock")).isDirectory() ?
-      path.join(cont._where, "mock") :
-      path.join(__dirname, "mock");
-  } catch (error) {
-    f = path.join(__dirname, "mock");
-  }
+  const mockP = path.join(cont._where, "mock");
+  const state = fs.existsSync(nextUrl) && fs.statSync(mockP).isDirectory();
+
+  f = path.join(state ? cont._where : __dirname, "mock");
+
+  let confCont = fs.readFileSync(path.join(f, "config.json"))
+  
+  CONFIG = Object.assign(CONFIG, confCont);
+  
   return f;
 })();
 
@@ -90,11 +94,11 @@ function getContext (fileUrl) {
   return Mock(utf8ToJson);
 };
 
-module.exports = ({ beforeUrl = "/api" }) => app => {
+module.exports = app => {
   console.time("setting api");
 
   rquestList.forEach(v => {
-    app[v.method](`${beforeUrl}${v.path}`, (req, res) => {
+    app[v.method](`${CONFIG.beforeUrl}${v.path}`, (req, res) => {
       res.set({
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS",
