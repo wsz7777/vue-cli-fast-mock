@@ -98,7 +98,7 @@ module.exports = app => {
   console.time("setting api");
 
   rquestList.forEach(v => {
-    app[v.method](`${CONFIG.beforeUrl}${v.path}`, (req, res) => {
+    app[v.method](`${CONFIG.baseUrl}${v.path}`, (req, res) => {
       res.set({
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS",
