@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-fast-mock",
-  "version": "0.0.4",
+  "version": "0.0.9",
   "description": "fast use mockjs&&hjson in vue-cli@3.x",
   "main": "index.js",
   "scripts": {

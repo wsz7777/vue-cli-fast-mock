@@ -1,5 +1,9 @@
 const path = require("path");
 const fs = require("fs");
+const hjson = require("hjson");
+const Mock = require("mockjs");
+
+
 let CONFIG = {
   baseUrl: "/"
 };
@@ -92,7 +96,7 @@ function getConfig (fileUrl) {
 function getContext (fileUrl) {
   const content = fs.readFileSync(fileUrl, "utf8");
   const utf8ToJson = hjson.parse(content);
-  return Mock(utf8ToJson);
+  return Mock.mock(utf8ToJson);
 };
 
 module.exports = app => {

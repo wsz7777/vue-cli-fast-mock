@@ -1,33 +1,75 @@
 [TOC]
 
-# mockjs应用
+# vue-cli-fast-mock应用
 
-## 文件目录结构
+## 使用说明
+
+### 基础
+
+> 1. 在 `vue-cli` 创建的项目目录下 创建 `mock` 文件夹
+>
+> 2. 在 `vue.config.js` 中引入 `vue-cli-fast-mock`
+>
+> 	```
+> 	const before = require("vue-cli-fast-mock");
+> 	module.exports = {
+> 	  lintOnSave: false,
+> 	  publicPath: "projectName",
+> 	  devServer: {
+> 	    before,
+> 	  }
+> 	};
+> 	```
 
 ```
-mock
-├── api	#api目录
+. //项目目录 vue-cli 构建的项目目录
+├── dist	// 打包文件
+├── mock	// 我们自己创建的 mock 文件 用来存放自己定义的api
+├── public	// 静态资源
+├── src		// 源码
+├── tests	// 测试套件
+├── README.md
+├── babel.config.js
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+└── vue.config.js
+```
+
+### 配置
+
+`hjson` 中的配置参考 `接口配置` 
+
+基础路径配置创建在 `config.json` 中的 `baseUrl` 属性。本项目的 `mock` 文件夹为示例
+
+## mock 创建api目录结构
+
+```
+mock // mock 文件夹下
+├── api1 //自由创建api咯
 │   ├── redis
 │   │   ├── order
-│   │   │   └── query.get.json	# api-url:/api/redis/order/query
-│   │   └── query.post.json		# api-url:/api/redis/query
+│   │   │   └── query.get.json	# api-url:/redis/order/query
+│   │   └── query.post.json		# api-url:/redis/query
 │   └── service
-│       ├── login.post.json		# api-url:/api/service/logiin
-│       └── upload.json			# api-url:/api/service/upload
-└── config.json # mock api配置文件
+│       ├── login.post.json		# api-url:/service/logiin
+│       └── upload.json			# api-url:/service/upload
+├── api2
+└── config.json	# 配置mock所需
 ```
 
 ## 配置一个新接口
 
-​	直接在`api` 目录下创建接口的访问目录嵌套。例如：
+​	直接在`mock` 目录下创建接口的访问目录嵌套。例如：
 
 > 要创建一个  `/wsz/test/login` 的接口，请求方式为 `post` 
 >
 > 操作：
 >
->  	1. 在 `mock` 文件夹下创建  `wsz/test` 文件夹
->  	2. 在 `mock/wsz/test/` 目录下创建 `login.hjson` 或者 `login.hjson` 文件
->  	3. 在 `login.post.json` 文件中写接口数据格式（采用mock方式随机生成数据，请阅读mockjs官方文档）
+>    	1. 在 `mock` 文件夹下创建  `wsz/test` 文件夹
+>    	2. 在 `mock/wsz/test/` 目录下创建  `login.hjson` 文件
+>    	3. 在 `login.hjson` 文件中写接口数据格式（采用mock方式随机生成数据，请阅读mockjs官方文档）
 >
 > 注：文件名采用 `接口名.hjson` 来配置，默认 `post` 请求
 
