@@ -13,7 +13,7 @@ const getRootPath = (() => {
   const mockP = path.join(process.cwd(), "mock");
   const state = fs.existsSync(mockP) && fs.statSync(mockP).isDirectory();
 
-  let f = path.join(state ? cont._where : __dirname, "mock");
+  let f = path.join(state ? process.cwd() : __dirname, "mock");
 
   let confCont = fs.existsSync(path.join(f, "config.json")) ?
     JSON.parse(fs.readFileSync(path.join(f, "config.json"), "utf8")) : CONFIG;
