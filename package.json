@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-fast-mock",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "fast use mockjs&&hjson in vue-cli@3.x",
   "main": "index.js",
   "scripts": {
@@ -25,5 +25,12 @@
   "dependencies": {
     "hjson": "^3.1.2",
     "mockjs": "^1.0.1-beta3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/hjson": "^2.4.1",
+    "@types/mockjs": "^1.0.2",
+    "@types/node": "^11.13.0",
+    "typescript": "^3.4.2"
   }
 }

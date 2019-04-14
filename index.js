@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const process = require("process");
 const hjson = require("hjson");
 const Mock = require("mockjs");
 
@@ -8,18 +9,16 @@ let CONFIG = {
   baseUrl: "/"
 };
 const getRootPath = (() => {
-  const pkjson = fs.readFileSync(path.join(__dirname, 'package.json'), "utf8");
-  const cont = JSON.parse(pkjson);
-  let f = null;
-  const mockP = path.join(cont._where, "mock");
+
+  const mockP = path.join(process.cwd(), "mock");
   const state = fs.existsSync(mockP) && fs.statSync(mockP).isDirectory();
 
-  f = path.join(state ? cont._where : __dirname, "mock");
+  let f = path.join(state ? cont._where : __dirname, "mock");
 
   let confCont = fs.existsSync(path.join(f, "config.json")) ?
-    JSON.parse(fs.readFileSync(path.join(f, "config.json"), "utf8")) : {};
+    JSON.parse(fs.readFileSync(path.join(f, "config.json"), "utf8")) : CONFIG;
 
-  CONFIG = Object.assign(CONFIG, confCont);
+  CONFIG = Object.assign({},CONFIG, confCont);
 
   return f;
 })();
